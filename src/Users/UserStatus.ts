@@ -1,0 +1,7 @@
+export enum UserStatus {
+
+    ACTIVE = 'ACTIVE',
+    INACTIVE = 'INACTIVE',
+    PENDING_CONFIRMATION = 'PENDING_CONFIRMATION'
+
+}
