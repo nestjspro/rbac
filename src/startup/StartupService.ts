@@ -68,7 +68,7 @@ export class StartupService implements OnModuleInit {
         //
         // }
 
-        await this.createConfigBasedPermissions();
+        // await this.createConfigBasedPermissions();
 
     }
 
