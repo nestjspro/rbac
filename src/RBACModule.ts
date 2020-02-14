@@ -10,6 +10,8 @@ import { RBACModuleConfig }                 from './RBACModuleConfig';
 import { RolesController }                  from './Roles/RolesController';
 import { RolesService }                     from './Roles/RolesService';
 import { StartupService }                   from './startup/StartupService';
+import { TokensController }                 from './Tokens/TokensController';
+import { TokensService }                    from './Tokens/TokensService';
 import { UsersController }                  from './Users/UsersController';
 import { UsersService }                     from './Users/UsersService';
 
@@ -42,6 +44,7 @@ import { UsersService }                     from './Users/UsersService';
         OrganizationsController,
         PermissionsController,
         RolesController,
+        TokensController,
         UsersController
 
     ],
@@ -51,6 +54,7 @@ import { UsersService }                     from './Users/UsersService';
         OrganizationsService,
         PermissionsService,
         RolesService,
+        TokensService,
         UsersService,
 
         StartupService
@@ -62,6 +66,7 @@ import { UsersService }                     from './Users/UsersService';
         OrganizationsService,
         PermissionsService,
         RolesService,
+        TokensService,
         UsersService
 
     ]

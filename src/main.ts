@@ -1,7 +1,11 @@
 import { Server }     from '@nestjs.pro/common/dist/server/Server';
 import { RBACModule } from './RBACModule';
 
-Server.bootstrap(RBACModule, 'rbac', 8181, {
+Server.bootstrap(RBACModule.forRoot({
+
+    initializeModuleDefaults: false
+
+}), 'rbac', 8181, {
 
     path: 'rbac',
     title: 'RBAC',
