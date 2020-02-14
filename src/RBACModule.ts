@@ -78,7 +78,7 @@ export class RBACModule {
 
                 {
 
-                    provide: 'CONFIG_OPTIONS',
+                    provide: 'CONFIG',
                     useValue: options
 
                 }
