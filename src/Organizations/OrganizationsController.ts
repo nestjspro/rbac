@@ -1,13 +1,12 @@
-import { ElasticsearchRequestInterceptor }         from '@nestjs.pro/logger-elasticsearch/dist/ElasticsearchRequestInterceptor';
-import { Body, Controller, Post, UseInterceptors } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags }                  from '@nestjs/swagger';
-import { Organization }                            from './Organization';
-import { OrganizationCreate }                      from './OrganizationCreate';
-import { OrganizationsService }                    from './OrganizationsService';
+import { Body, Controller, Post } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { Organization }           from './Organization';
+import { OrganizationCreate }     from './OrganizationCreate';
+import { OrganizationsService }   from './OrganizationsService';
 
 @ApiBearerAuth()
 @ApiTags('Organizations')
-@UseInterceptors(ElasticsearchRequestInterceptor)
+// @UseInterceptors(ElasticsearchRequestInterceptor)
 @Controller('/rbac/organizations')
 export class OrganizationsController {
 
