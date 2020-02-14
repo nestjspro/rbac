@@ -1,6 +1,5 @@
 import { ResourceAlreadyExistsException } from '@nestjs.pro/common';
 import { ResourceNotFoundException }      from '@nestjs.pro/common/dist/exceptions/ResourceNotFoundException';
-import { ElasticsearchLoggerService }     from '@nestjs.pro/logger-elasticsearch/dist/ElasticsearchLoggerService';
 import { Injectable }                     from '@nestjs/common';
 import { InjectRepository }               from '@nestjs/typeorm';
 import { Organization }                   from './Organization';
@@ -12,8 +11,7 @@ export class OrganizationsService {
 
     private readonly organizationRepository: OrganizationRepository;
 
-    public constructor(@InjectRepository(OrganizationRepository) organizationRepository: OrganizationRepository,
-                       private readonly elasticsearchLoggerService: ElasticsearchLoggerService) {
+    public constructor(@InjectRepository(OrganizationRepository) organizationRepository: OrganizationRepository) {
 
         this.organizationRepository = organizationRepository;
 
@@ -54,29 +52,9 @@ export class OrganizationsService {
      */
     public async create(organizationCreate: OrganizationCreate): Promise<Organization> {
 
-        // let existing: Organization;
-        //
-        // try {
-        //
-        //     existing = await this.getByName(organizationCreate.name);
-        //
-        // } catch (e) {
-
-        this.elasticsearchLoggerService.info(`Created organization ${ organizationCreate.name }`);
+        // this.elasticsearchLoggerService.info(`Created organization ${ organizationCreate.name }`);
 
         return this.organizationRepository.save({ name: organizationCreate.name });
-
-        // }
-        //
-        // if (existing) {
-        //
-        //     throw new ResourceAlreadyExistsException('organization by this name already exists');
-        //
-        // } else {
-        //
-        //     return this.organizationRepository.save({ name: organizationCreate.name });
-        //
-        // }
 
     }
 
