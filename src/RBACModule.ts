@@ -1,4 +1,4 @@
-import { Module }                           from '@nestjs/common';
+import { DynamicModule, Module }            from '@nestjs/common';
 import { JwtModule }                        from '@nestjs/jwt';
 import { TypeOrmModule }                    from '@nestjs/typeorm';
 import { RBAC_ENTITIES, RBAC_REPOSITORIES } from './index';
@@ -6,6 +6,7 @@ import { OrganizationsController }          from './Organizations/OrganizationsC
 import { OrganizationsService }             from './Organizations/OrganizationsService';
 import { PermissionsController }            from './Permissions/PermissionsController';
 import { PermissionsService }               from './Permissions/PermissionsService';
+import { RBACModuleConfig }                 from './RBACModuleConfig';
 import { RolesController }                  from './Roles/RolesController';
 import { RolesService }                     from './Roles/RolesService';
 import { StartupService }                   from './startup/StartupService';
@@ -67,5 +68,25 @@ import { UsersService }                     from './Users/UsersService';
 
 })
 export class RBACModule {
+
+    public static forRoot(options: RBACModuleConfig): DynamicModule {
+
+        return {
+
+            module: RBACModule,
+            providers: [
+
+                {
+
+                    provide: 'CONFIG_OPTIONS',
+                    useValue: options
+
+                }
+
+            ]
+
+        };
+
+    }
 
 }
