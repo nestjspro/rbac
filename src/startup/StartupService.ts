@@ -68,33 +68,37 @@ export class StartupService implements OnModuleInit {
         //
         // }
 
-        // await this.createConfigBasedPermissions();
+        await this.createConfigBasedPermissions();
 
     }
 
     private async createConfigBasedPermissions(): Promise<void> {
 
-        const principal = await this.usersService.getByEmail('test@test.com');
+        if (this.config.roles) {
 
-        for (let roleCreate of this.config.roles) {
+            const principal = await this.usersService.getByEmail('test@test.com');
 
-            await this.rolesService.deleteByOrganizationAndName(principal.organization, roleCreate.name);
+            for (let roleCreate of this.config.roles) {
 
-            const role = await this.rolesService.create(principal, roleCreate);
+                await this.rolesService.deleteByOrganizationAndName(principal.organization, roleCreate.name);
 
-            for (let permissionCreate of roleCreate.permissions) {
+                const role = await this.rolesService.create(principal, roleCreate);
 
-                await this.permissionsService.create(principal.organization, permissionCreate).then(() => {
+                for (let permissionCreate of roleCreate.permissions) {
 
-                    console.log(`Created permission "${ permissionCreate.name }..`);
+                    await this.permissionsService.create(principal.organization, permissionCreate).then(() => {
 
-                }).catch(() => {
+                        console.log(`Created permission "${ permissionCreate.name }..`);
 
-                    console.log(`Permission already exists "${ permissionCreate.name }..`);
+                    }).catch(() => {
 
-                });
+                        console.log(`Permission already exists "${ permissionCreate.name }..`);
 
-                await this.rolesService.addPermission(principal, role.id, (await this.permissionsService.getByOrganizationAndName(principal.organization, permissionCreate.name)).id);
+                    });
+
+                    await this.rolesService.addPermission(principal, role.id, (await this.permissionsService.getByOrganizationAndName(principal.organization, permissionCreate.name)).id);
+
+                }
 
             }
 
