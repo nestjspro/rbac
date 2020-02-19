@@ -10,6 +10,7 @@
         "start:dev": "concurrently --handle-input \"wait-on dist/main.js && nodemon\" \"tsc -w -p tsconfig.json\" "
     },
     "dependencies": {
+        "@nestjs-plus/rabbitmq": "^1.4.4",
         "@nestjs.pro/common": "^1.0.18",
         "@nestjs.pro/logger-elasticsearch": "^0.0.11",
         "@nestjs/passport": "^6.1.1",

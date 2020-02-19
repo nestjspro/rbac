@@ -27,8 +27,11 @@ export class RolesService {
     }
 
     /**
+     * Search for roles.
      *
      * @param organization
+     *
+     * @return {Promise<Array<Role>>}
      */
     public search(organization: Organization): Promise<Array<Role>> {
 
@@ -38,11 +41,12 @@ export class RolesService {
 
     }
 
-
     /**
+     * Retrieve a role by it's id.
      *
-     * @param organization
      * @param id
+     *
+     * @return {Promise<Role>}
      */
     public async getById(id: string): Promise<Role> {
 
@@ -65,9 +69,12 @@ export class RolesService {
     }
 
     /**
+     * Retrive a role by it's id and owning organization.
      *
      * @param organization
      * @param id
+     *
+     * @return {Promise<Role>}
      */
     public async getByIdAndOrganization(id: string, organization: Organization): Promise<Role> {
 
@@ -90,9 +97,12 @@ export class RolesService {
     }
 
     /**
+     * Retrieve a role by it's organization and name.
      *
      * @param organization
-     * @param id
+     * @param name
+     *
+     * @return {Promise<Role>}
      */
     public async getByOrganizationAndName(organization: Organization, name: string): Promise<Role> {
 
