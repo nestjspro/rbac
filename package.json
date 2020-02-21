@@ -1,6 +1,6 @@
 {
     "name": "@nestjs.pro/rbac",
-    "version": "0.0.14",
+    "version": "0.0.15",
     "main": "dist/main.js",
     "types": "dist/exceptions/ResourceAlreadyExistsException.d.ts",
     "license": "MIT",
@@ -9,7 +9,6 @@
     "scripts": {
         "start:dev": "concurrently --handle-input \"wait-on dist/main.js && nodemon\" \"tsc -w -p tsconfig.json\" ",
         "release": "npm version patch && rm -rf dist && tsc && npm publish --access=public"
-
     },
     "dependencies": {
         "@nestjs-plus/rabbitmq": "^1.4.4",
