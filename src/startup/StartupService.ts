@@ -16,57 +16,57 @@ export class StartupService implements OnModuleInit {
 
     public async onModuleInit() {
 
-        // if (this.config.initializeModuleDefaults) {
-        //
-        //     await this.usersService.register({
-        //
-        //         email: 'test@test.com',
-        //         password: 'asdfasdf'
-        //
-        //     }).catch(async (e) => {
-        //
-        //         // user already exists
-        //         // await this.usersService.deleteById((await this.usersService.getByEmail('test@test.com')).id);
-        //         //
-        //         // await this.usersService.register({
-        //         //
-        //         //     email: 'test@test.com',
-        //         //     password: 'asdfasdf'
-        //         //
-        //         // });
-        //
-        //     });
-        //
-        //     const principal = await this.usersService.getByEmail('test@test.com');
-        //
-        //     await this.rolesService.deleteByOrganizationAndName(principal.organization, 'rbac.admin');
-        //
-        //     const role = await this.rolesService.create(principal, RBAC_DEFAULT_ROLES[ 0 ]);
-        //
-        //     for (let permissionCreate of RBAC_DEFAULT_PERMISSIONS) {
-        //
-        //         permissionCreate.roles = [ role ];
-        //
-        //         await this.permissionsService.create(principal.organization, permissionCreate).then(() => {
-        //
-        //             console.log(`Created permission "${ permissionCreate.name }..`);
-        //
-        //         }).catch(() => {
-        //
-        //             console.log(`Permission already exists "${ permissionCreate.name }..`);
-        //
-        //         });
-        //
-        //         await this.rolesService.addPermission(principal, role.id, (await this.permissionsService.getByOrganizationAndName(principal.organization, permissionCreate.name)).id);
-        //
-        //     }
-        //
-        //     console.log(`Assigning role "rbac.admin" to user "${ principal.email }`);
-        //
-        //     await this.rolesService.unassignFromUser(principal, (await this.rolesService.getByOrganizationAndName(principal.organization, 'rbac.admin')).id, principal.id);
-        //     await this.rolesService.assignToUser(principal, (await this.rolesService.getByOrganizationAndName(principal.organization, 'rbac.admin')).id, principal.id);
-        //
-        // }
+        if (this.config.initializeModuleDefaults) {
+
+            await this.usersService.register({
+
+                email: 'test@test.com',
+                password: 'asdfasdf'
+
+            }).catch(async (e) => {
+
+                // user already exists
+                // await this.usersService.deleteById((await this.usersService.getByEmail('test@test.com')).id);
+                //
+                // await this.usersService.register({
+                //
+                //     email: 'test@test.com',
+                //     password: 'asdfasdf'
+                //
+                // });
+
+            });
+
+            const principal = await this.usersService.getByEmail('test@test.com');
+
+            await this.rolesService.deleteByOrganizationAndName(principal.organization, 'rbac.admin');
+
+            const role = await this.rolesService.create(principal, RBAC_DEFAULT_ROLES[ 0 ]);
+
+            for (let permissionCreate of RBAC_DEFAULT_PERMISSIONS) {
+
+                permissionCreate.roles = [ role ];
+
+                await this.permissionsService.create(principal.organization, permissionCreate).then(() => {
+
+                    console.log(`Created permission "${ permissionCreate.name }..`);
+
+                }).catch(() => {
+
+                    console.log(`Permission already exists "${ permissionCreate.name }..`);
+
+                });
+
+                await this.rolesService.addPermission(principal, role.id, (await this.permissionsService.getByOrganizationAndName(principal.organization, permissionCreate.name)).id);
+
+            }
+
+            console.log(`Assigning role "rbac.admin" to user "${ principal.email }`);
+
+            await this.rolesService.unassignFromUser(principal, (await this.rolesService.getByOrganizationAndName(principal.organization, 'rbac.admin')).id, principal.id);
+            await this.rolesService.assignToUser(principal, (await this.rolesService.getByOrganizationAndName(principal.organization, 'rbac.admin')).id, principal.id);
+
+        }
 
         await this.createConfigBasedPermissions();
 
