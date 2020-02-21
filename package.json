@@ -7,7 +7,9 @@
     "preversion": "rm -rf dist && tsc",
     "postversion": "npm publish",
     "scripts": {
-        "start:dev": "concurrently --handle-input \"wait-on dist/main.js && nodemon\" \"tsc -w -p tsconfig.json\" "
+        "start:dev": "concurrently --handle-input \"wait-on dist/main.js && nodemon\" \"tsc -w -p tsconfig.json\" ",
+        "release": "npm version patch && rm -rf dist && tsc && npm publish --access=public"
+
     },
     "dependencies": {
         "@nestjs-plus/rabbitmq": "^1.4.4",

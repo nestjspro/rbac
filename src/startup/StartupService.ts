@@ -1,8 +1,9 @@
-import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
-import { PermissionsService }               from '../Permissions/PermissionsService';
-import { RBACModuleConfig }                 from '../RBACModuleConfig';
-import { RolesService }                     from '../Roles/RolesService';
-import { UsersService }                     from '../Users/UsersService';
+import { Inject, Injectable, OnModuleInit }             from '@nestjs/common';
+import { PermissionsService }                           from '../Permissions/PermissionsService';
+import { RBACModuleConfig }                             from '../RBACModuleConfig';
+import { RolesService }                                 from '../Roles/RolesService';
+import { UsersService }                                 from '../Users/UsersService';
+import { RBAC_DEFAULT_PERMISSIONS, RBAC_DEFAULT_ROLES } from './Defaults';
 
 @Injectable()
 export class StartupService implements OnModuleInit {
