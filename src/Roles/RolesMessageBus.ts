@@ -13,7 +13,7 @@ export class RolesMessageBus {
 
     @RabbitRPC({
 
-        exchange: 'streamnvr',
+        exchange: process.env.RABBITMQ_EXCHANGE,
         routingKey: 'roles',
         queue: 'roles'
 

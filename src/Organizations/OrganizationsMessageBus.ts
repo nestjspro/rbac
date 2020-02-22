@@ -13,7 +13,7 @@ export class OrganizationsMessageBus {
 
     @RabbitRPC({
 
-        exchange: 'streamnvr',
+        exchange: process.env.RABBITMQ_EXCHANGE,
         routingKey: 'organizations',
         queue: 'organizations'
 
