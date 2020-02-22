@@ -42,6 +42,8 @@ export class StartupService implements OnModuleInit {
 
             const principal = await this.usersService.getByEmail('test@test.com');
 
+            console.log(principal);
+
             await this.rolesService.deleteByOrganizationAndName(principal.organization, 'rbac.admin');
 
             const role = await this.rolesService.create(principal, RBAC_DEFAULT_ROLES[ 0 ]);
