@@ -35,6 +35,8 @@ export class StartupService implements OnModuleInit {
                 //     password: 'asdfasdf'
                 //
                 // });
+                console.log(e);
+
 
             });
 
