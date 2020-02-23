@@ -19,6 +19,8 @@ export class UsersMessageBus {
     })
     public async handleMessage(methodCall: MessagingMethod) {
 
+        console.log(1111234242342342);
+
         console.log(methodCall);
 
         console.log(methodCall.args);
