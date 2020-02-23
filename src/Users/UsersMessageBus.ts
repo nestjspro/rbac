@@ -23,7 +23,19 @@ export class UsersMessageBus {
 
         if (this.usersService[ methodCall.methodName ]) {
 
-            return this.usersService[ methodCall.methodName ](...methodCall.args).catch(e => console.log(e));
+            if (methodCall.args && methodCall.args.length === 1) {
+
+                return this.usersService[ methodCall.methodName ](methodCall.args[ 0 ]).catch(e => console.log(e));
+
+            } else if (methodCall.args.length === 2) {
+
+                return this.usersService[ methodCall.methodName ](methodCall.args[ 0 ], methodCall.args[ 1 ]).catch(e => console.log(e));
+
+            } else {
+
+                return 'coordinates do not match';
+
+            }
 
         } else {
 
