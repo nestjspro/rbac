@@ -19,4 +19,4 @@ Server.bootstrap(RBACModule.forRoot({
     docsUrl: 'https://matthewdavis.io',
     serverUrls: [ 'http://localhost:8181' ]
 
-}, []);
+}, [], null);
