@@ -147,7 +147,7 @@ export class UsersService {
      */
     public async register(userRegister: UserRegister): Promise<User> {
 
-        console.log(userRegister);
+        console.log(userRegister[ 0 ]);
 
         //
         // First create organization so we can later assignToUser it to the
