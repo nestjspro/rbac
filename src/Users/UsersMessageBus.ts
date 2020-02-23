@@ -21,6 +21,10 @@ export class UsersMessageBus {
 
         console.log(methodCall);
 
+        console.log(methodCall.args);
+
+        console.log(methodCall.args.length);
+
         if (this.usersService[ methodCall.methodName ]) {
 
             if (methodCall.args && methodCall.args.length === 1) {
