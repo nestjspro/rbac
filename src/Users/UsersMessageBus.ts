@@ -23,7 +23,7 @@ export class UsersMessageBus {
 
         if (this.usersService[ methodCall.methodName ]) {
 
-            return this.usersService[ methodCall.methodName ].apply(methodCall.args).catch(e => console.log(e));
+            return this.usersService[ methodCall.methodName ](...methodCall.args).catch(e => console.log(e));
 
         } else {
 
