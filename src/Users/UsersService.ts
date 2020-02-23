@@ -168,6 +168,8 @@ export class UsersService {
         _user.password = userRegister.password;
         // _user.confirmToken = Random.getRandomCryptoString(100);
 
+        console.log(_user);
+
         //
         // Save the _user object to the database.
         //
