@@ -19,7 +19,12 @@ export class TokensService {
 
         return new Promise(async (resolve, reject) => {
 
-            const entity = await this.tokenRepository.findOne({ where: { token } });
+            const entity = await this.tokenRepository.findOne({
+
+                where: { token },
+                relations: [ 'user' ]
+
+            });
 
             if (entity) {
 
