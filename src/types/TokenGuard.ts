@@ -28,6 +28,10 @@ export class TokenGuard implements CanActivate {
 
             return new Promise<boolean>(async (resolve, reject) => {
 
+                console.log(`Validating token "${ request.query[ 'token' ] }`);
+
+                console.log(await this.tokensService.getByToken(request.query[ 'token' ]));
+
                 const token = await this.tokensService.getByToken(request.query[ 'token' ]).catch(() => {
 
                 });
