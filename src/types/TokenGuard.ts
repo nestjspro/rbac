@@ -24,19 +24,15 @@ export class TokenGuard implements CanActivate {
         const request = ctx.getRequest<Request>();
         const response = ctx.getResponse<Response>();
 
+        console.log(`Validating token "${ request.query[ 'token' ] }`);
+
         if (request.query[ 'token' ]) {
 
             return new Promise<boolean>(async (resolve, reject) => {
 
-                console.log(`Validating token "${ request.query[ 'token' ] }`);
-
-                console.log(await this.tokensService.getByToken(request.query[ 'token' ]));
-
                 const token = await this.tokensService.getByToken(request.query[ 'token' ]).catch(() => {
 
                 });
-
-                console.log(token);
 
                 if (token) {
 
@@ -54,7 +50,7 @@ export class TokenGuard implements CanActivate {
 
         } else {
 
-            response.status(401).json({ message: 'invalid or expired token' });
+            response.status(401).json({ message: 'missing token' });
 
         }
 
