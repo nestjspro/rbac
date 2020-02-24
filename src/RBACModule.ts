@@ -54,16 +54,6 @@ dotenv.config();
 
     ],
 
-    controllers: [
-
-        OrganizationsController,
-        PermissionsController,
-        RolesController,
-        TokensController,
-        UsersController
-
-    ],
-
     providers: [
 
         OrganizationsService,
@@ -93,6 +83,16 @@ export class RBACModule {
 
     public static forRoot(options: RBACModuleConfig): DynamicModule {
 
+        const controllers = options.enableControllers ? [
+
+            OrganizationsController,
+            PermissionsController,
+            RolesController,
+            TokensController,
+            UsersController
+
+        ] : null;
+
         return {
 
             module: RBACModule,
@@ -105,7 +105,8 @@ export class RBACModule {
 
                 }
 
-            ]
+            ],
+            controllers
 
         };
 
