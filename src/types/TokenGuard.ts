@@ -24,7 +24,7 @@ export class TokenGuard implements CanActivate {
         const request = ctx.getRequest<Request>();
         const response = ctx.getResponse<Response>();
 
-        if (request.headers.authorization) {
+        if (request.query[ 'token' ]) {
 
             return new Promise<boolean>(async (resolve, reject) => {
 
