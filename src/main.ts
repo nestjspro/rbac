@@ -3,9 +3,9 @@ import { RBACModule } from './RBACModule';
 
 Server.bootstrap(RBACModule.forRoot({
 
-    initializeModuleDefaults: false
+    initializeModuleDefaults: true
 
-}), 'rbac', 8181, {
+}), 'rbac', 8182, {
 
     path: 'rbac',
     title: 'RBAC',
@@ -20,3 +20,5 @@ Server.bootstrap(RBACModule.forRoot({
     serverUrls: [ 'http://localhost:8181' ]
 
 }, [], null);
+
+

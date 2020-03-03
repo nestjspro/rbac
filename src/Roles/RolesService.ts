@@ -69,6 +69,33 @@ export class RolesService {
     }
 
     /**
+     * Retrieve role by it's name.
+     *
+     * @param {string} name
+     *
+     * @return {Promise<Role>}
+     */
+    public async getByName(name: string): Promise<Role> {
+
+        return new Promise(async (resolve, reject) => {
+
+            const role = await this.rolesRepository.findOne({ where: { name } });
+
+            if (role) {
+
+                resolve(role);
+
+            } else {
+
+                reject(new ResourceNotFoundException('could not locate role'));
+
+            }
+
+        });
+
+    }
+
+    /**
      * Retrive a role by it's id and owning organization.
      *
      * @param organization
@@ -251,6 +278,26 @@ export class RolesService {
                   .relation(Role, 'users')
                   .of(await this.getByIdAndOrganization(roleId, principal.organization))
                   .add(await this.usersService.getByIdAndPrincipalOrganization(principal.organization, userId));
+
+        return true;
+
+    }
+
+    /**
+     * Assign a role to a user by the role name and users email address.
+     *
+     * @param {string} email
+     * @param {string} roleName
+     *
+     * @return {Promise<boolean>}
+     */
+    public async assignToEmailByName(email: string, roleName: string): Promise<boolean> {
+
+        await this.rolesRepository
+                  .createQueryBuilder()
+                  .relation(Role, 'users')
+                  .of(await this.getByName(roleName))
+                  .add(await this.usersService.getByEmail(email));
 
         return true;
 
