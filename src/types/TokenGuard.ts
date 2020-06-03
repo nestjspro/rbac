@@ -24,7 +24,7 @@ export class TokenGuard implements CanActivate {
         const request = ctx.getRequest<Request>();
         const response = ctx.getResponse<Response>();
 
-        console.log(`Validating token "${ request.query[ 'token' ] }`);
+        console.log(`Validating token "${ request.query[ 'token' ] }"`);
 
         if (request.query[ 'token' ]) {
 

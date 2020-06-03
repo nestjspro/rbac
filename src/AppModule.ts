@@ -32,7 +32,7 @@ import { RBACModuleConfig }                                                   fr
             name: 'rbac',
             index: 'logs',
             stdout: true,
-            elasticsearchClientOptions: { nodes: 'http://localhost:9200' }
+            elasticsearchClientOptions: { nodes: process.env.ELASTICSEARCH_URL }
 
         })
 
