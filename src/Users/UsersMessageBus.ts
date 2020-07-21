@@ -19,19 +19,9 @@ export class UsersMessageBus {
     })
     public async handleMessage(methodCall: MessagingMethod) {
 
-        console.log(1111234242342342);
-
-        console.log(methodCall);
-
-        console.log(methodCall.args);
-
-        console.log(methodCall.args.length);
-
         if (this.usersService[ methodCall.methodName ]) {
 
             if (methodCall.args && methodCall.args.length === 1) {
-
-                console.log(123);
 
                 return this.usersService[ methodCall.methodName ](methodCall.args[ 0 ]).catch(e => console.log(e));
 
