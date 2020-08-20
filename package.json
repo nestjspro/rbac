@@ -15,7 +15,7 @@
         "@nestjs.pro/common": "^1.0.18",
         "@nestjs.pro/logger-elasticsearch": "^0.0.11",
         "@nestjs/passport": "^6.1.1",
-        "bcrypt": "^3.0.8",
+        "bcrypt": "^5.0.0",
         "class-transformer": "^0.2.3",
         "mysql": "^2.18.1",
         "passport": "^0.4.1",
